@@ -2,9 +2,11 @@
   "name": "cobalt-client",
   "version": "0.0.1",
   "description": "Official client for cobalt, available on Windows, MacOS and Linux",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "rm -rf ./dist && tsc",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
