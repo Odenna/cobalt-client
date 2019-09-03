@@ -1,0 +1,28 @@
+{
+  "name": "cobalt-client",
+  "version": "0.0.1",
+  "description": "Official client for cobalt, available on Windows, MacOS and Linux",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Odenna/cobalt-client.git"
+  },
+  "keywords": [
+    "Cobalt",
+    "client"
+  ],
+  "author": "Doritanh",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Odenna/cobalt-client/issues"
+  },
+  "homepage": "https://github.com/Odenna/cobalt-client#readme",
+  "devDependencies": {
+    "electron": "^6.0.7",
+    "eslint": "^6.3.0",
+    "typescript": "^3.6.2"
+  }
+}
