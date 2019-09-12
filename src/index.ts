@@ -8,10 +8,12 @@ function createWindow () {
         webPreferences: {
             nodeIntegration: true
         }
-    })
+    });
+
+    win.webContents.openDevTools();
 
     // and load the index.html of the app.
-    win.loadFile('../app/index.html')
+    win.loadFile(__dirname + '/../app/index.html')
 }
 
 app.on('ready', createWindow)

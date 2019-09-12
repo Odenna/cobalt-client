@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha",
     "build": "rm -rf ./dist && tsc",
+    "prestart": "npm run build",
     "start": "electron ."
   },
   "repository": {
