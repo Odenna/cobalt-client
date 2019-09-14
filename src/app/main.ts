@@ -15,7 +15,7 @@ class Widget {
         this.element.classList.add(className);
     }
 
-    protected insert(elem : HTMLElement) {
+    protected appendChild(elem : HTMLElement) {
         this.element.appendChild(elem);
     }
 
@@ -27,7 +27,7 @@ class Widget {
         if (this.element.parentNode) {
             this.element = this.element.parentNode.removeChild(this.element);
         } else {
-            throw 'Can\'t detach an element with parentNode property to null !';
+            throw "Can't detach an element with parentNode property to null !";
         }
     }
 
@@ -56,7 +56,7 @@ class AuthentificationWidget extends Widget {
         super('authentification');
 
         this.form = document.createElement('form');
-        this.insert(this.form);
+        this.appendChild(this.form);
 
         this.signin_login = document.createElement('input');
         this.signin_login.type = 'text';

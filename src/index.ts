@@ -1,8 +1,10 @@
 import { app, BrowserWindow } from 'electron';
 
+let win : BrowserWindow;
+
 function createWindow () {
     // Cree la fenetre du navigateur.
-    let win: BrowserWindow = new BrowserWindow({
+    win = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
@@ -13,7 +15,7 @@ function createWindow () {
     win.webContents.openDevTools();
 
     // and load the index.html of the app.
-    win.loadFile(__dirname + '/../app/index.html')
+    win.loadFile(__dirname + '/../app/index.html');
 }
 
 app.on('ready', createWindow)
