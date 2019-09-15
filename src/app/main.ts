@@ -4,8 +4,8 @@ window.addEventListener('load', () => {
     var body : HTMLElement = document.body;
     body.classList.add('dark');
 
-    var auth = new AuthentificationWidget();
-    auth.attach(body);
+    var auth = new Authentification();
+    auth.showWidgets();
 });
 
 enum AuthentificationState {
@@ -13,7 +13,20 @@ enum AuthentificationState {
     SIGNIN
 }
 
+interface IAuthRegister {
+    login: string,
+    password: string,
+    password_confirm: string
+}
+
+interface IAuthSignin {
+    login: string,
+    password: string
+}
+
 class AuthentificationWidget extends Widget {
+    private auth : Authentification;
+
     private form : HTMLFormElement;
 
     private signin_login : HTMLInputElement;
@@ -27,8 +40,10 @@ class AuthentificationWidget extends Widget {
 
     private state : AuthentificationState;
 
-    constructor() {
+    constructor(auth : Authentification) {
         super('authentification');
+
+        this.auth = auth;
 
         this.form = document.createElement('form');
         this.appendChild(this.form);
@@ -64,7 +79,11 @@ class AuthentificationWidget extends Widget {
         this.register_button.addEventListener('click', (e) => {
             e.preventDefault();
             if (this.state === AuthentificationState.REGISTER) {
-                this.submitRegister();
+                this.auth.register({
+                    login: this.register_login.value,
+                    password: this.register_password.value,
+                    password_confirm: this.register_password_confirm.value
+                });
             } else {
                 this.switchState(AuthentificationState.REGISTER);
             }
@@ -73,7 +92,10 @@ class AuthentificationWidget extends Widget {
         this.signin_button.addEventListener('click', (e) => {
             e.preventDefault();
             if (this.state === AuthentificationState.SIGNIN) {
-                this.submitSignin();
+                this.auth.signin({
+                    login: this.signin_login.value,
+                    password: this.signin_password.value
+                });
             } else {
                 this.switchState(AuthentificationState.SIGNIN);
             }
@@ -81,14 +103,6 @@ class AuthentificationWidget extends Widget {
 
         this.state = AuthentificationState.SIGNIN;
         this.switchState(AuthentificationState.SIGNIN);
-    }
-
-    private submitRegister() {
-        // TODO
-    }
-
-    private submitSignin() {
-        // TODO
     }
 
     public switchState(state : AuthentificationState) {
@@ -111,5 +125,26 @@ class AuthentificationWidget extends Widget {
                 this.form.appendChild(this.register_button);
                 break;
         }
+    }
+}
+
+class Authentification {
+    private widget : AuthentificationWidget | null;
+
+    constructor() {
+        this.widget = null;
+    }
+
+    public showWidgets() {
+        this.widget = new AuthentificationWidget(this);
+        this.widget.attach(document.body);
+    }
+
+    public register(user : IAuthRegister) {
+        console.warn('TODO !')
+    }
+
+    public signin(user : IAuthSignin) {
+        console.warn('TODO !')
     }
 }
