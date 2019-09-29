@@ -1,13 +1,5 @@
 import { AuthentificationWidget } from '../widgets/auth';
 
-window.addEventListener('load', () => {
-    var body : HTMLElement = document.body;
-    body.classList.add('dark');
-
-    var auth = new Authentification();
-    auth.showWidgets();
-});
-
 class Authentification {
     private widget : AuthentificationWidget;
 
@@ -30,3 +22,5 @@ class Authentification {
         this.widget.attach(document.body);
     }
 }
+
+export { Authentification };
